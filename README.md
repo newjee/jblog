@@ -14,3 +14,22 @@
 2. 
 
 
+
+============
+### spring 나만의 wa-ggu 정리
+
+0. DispatcherServlet   
+   - web.xml에서 설정
+   -    
+1. Controller
+   - autowired로 Service 주입
+   - 
+   - applicationWebContext -> spring-sevlet.xml에서 설정
+     - View Resolver가 view(.jsp)와 연결 -> return "" 경로 설정   
+2. Service
+   - autowired로 Repository 주입
+   - applicationWebContext -> applicationContext.xml에서 설정
+   - 
+
+   
+
