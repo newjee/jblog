@@ -32,11 +32,11 @@
 
 ### MVC 구조
 
-MVC       |  description
-----------|----------------------------------------------------------------------
+MVC          |  description
+-------------|----------------------------------------------------------------------
 Controller   |  웹 브라우저의 req을 받음 -> req param 바인딩, 검증, res화면, res화면에 담을 model 결정 
 Service      |  비즈니스 로직 수행, 트랜잭션 경계 설정, 접근 권한 확인
-Repository          |  데이터 저장 및 조회
+Repository   |  데이터 저장 및 조회
 - 객체지향 분석 설계 원칙 중 '단일 책임 원칙'
 
 ### e.g. member 모듈
@@ -49,37 +49,38 @@ Repository          |  데이터 저장 및 조회
    d
 ### 개발 흐름
 0. **maven 설정**
-   - pom.xml : 메이븐 설정 파일
-      - 기본 정보, 의존성(dependency), 저장소, 빌드 정보, 플러그인 정보 설정
-       
+- pom.xml : 메이븐 설정 파일
+  - 기본 정보, 의존성(dependency), 저장소, 빌드 정보, 플러그인 정보 설정  
 1. **DispatcherServlet 설정**
-   - web.xml
-      - 서블릿 이름 설정 및 매핑
-      - <servlet> <servlet-name>...<serlvet-class>... </servlet>
-      - <servlet-mapping> <servlet-name> ... <url-pattern>... </servlet-mapping>
-      - -> web/WEB-INF에 "서블릿 이름"-servlet.xml 파일을 스프링 설정파일로 사용
-      - -> e.g.<url-pattern>/ 일 경우 모든 url을 대상으로 서블릿 처리
+- web.xml
 
-1-1. **spring-servlet.xml 설정**
-   - <context:component-scan base-package=.../controller>
+settings               |  description                                                       | 
+-----------------------|--------------------------------------------------------------------------------------------------------
+서블릿 이름 설정           |  ```<servlet> <servlet-name>...<serlvet-class>... </servlet>``` </br> -> web/WEB-INF에 "서블릿 이름"-servlet.xml 파일을 스프링 설정파일로 사용             
+서블릿 매핑               |  ```<servlet-mapping> <servlet-name> ... <url-pattern>... </servlet-mapping>``` </br> -> e.g. ```<url-pattern>```가 / 일 경우 모든 url을 대상으로 서블릿 처리
+리스너                   | ```<listener> ... ContextLoaderListener....``` </br> -> 웹앱이 서블릿 컨테이너에 로딩될 때 실행되는 리스너 
+</br> -> 
 
 
-2. **Controller**
-   - 스프링 MVC의 모든 요청은 DispatcerServlet으로 처리
-      - url로 들어온 요청을 DS가 catch
-      - 이 요청을 처리할 Controller을 탐색
-      - Ct에서 요청을 처리한 후 View 정보를 문자열(e.g. "/WEB-INF/views/hello.jsp)로 제공
-      - DS에서 문자열을 기반으로 hello.jsp 파일을 찾은 후, Ct가 Model에 담은 정보를 이용해 View를 만들어 **response**
-    
-   
-   - applicationWebContext -> spring-sevlet.xml에서 설정
-     - View Resolver가 view(.jsp)와 연결 -> return "" 경로 설정
-    
-  - autowired로 Service 주입
-3. **Service**
-   - autowired로 Repository 주입
-   - applicationWebContext -> applicationContext.xml에서 설정
-   - 
+2. **spring-servlet.xml 설정**
+- <context:component-scan base-package=.../controller>
 
-   
+3. **Controller**
+- 스프링 MVC의 모든 요청은 DispatcerServlet으로 처리
+  - url로 들어온 요청을 DS가 catch
+  - 이 요청을 처리할 Controller을 탐색
+  - Ct에서 요청을 처리한 후 View 정보를 문자열(e.g. "/WEB-INF/views/hello.jsp)로 제공
+  - DS에서 문자열을 기반으로 hello.jsp 파일을 찾은 후, Ct가 Model에 담은 정보를 이용해 View를 만들어 **response**
+
+
+- applicationWebContext -> spring-sevlet.xml에서 설정
+  - View Resolver가 view(.jsp)와 연결 -> return "" 경로 설정
+
+- autowired로 Service 주입
+4. **Service**
+- autowired로 Repository 주입
+- applicationWebContext -> applicationContext.xml에서 설정
+- 
+
+ 
 
