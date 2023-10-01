@@ -22,7 +22,10 @@
 
 ### 회원 기능
 1. 회원가입/로그인 UserController -> UserService -> UserRepository
-2. 
+2. 회원가입을 한다.
+
+회원가입을 하면 해당 사용자의 블로그가 자동 생성
+3. 
 
 ![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/rainbow.png)
 
