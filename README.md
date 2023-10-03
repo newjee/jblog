@@ -21,10 +21,13 @@
 > <img width="700" alt="image" src="https://github.com/newjee/jblog/assets/31722578/1971f22e-926b-4af9-b404-a56768c4a977">
 
 ### 회원 기능
-1. 회원가입/로그인 UserController -> UserService -> UserRepository
-2. 회원가입을 한다.
+UserController -> UserService -> UserRepository
+기능          |  description
+-------------|----------------------------------------------------------------------
+회원가입을 한다. |  UserController>join
+로그인을 한다.  |  UserController>login </br> -> AuthenticationFilter
+회원가입을 하면 해당 사용자의 블로그가 자동 생성.   |  데이터 저장 및 조회
 
-회원가입을 하면 해당 사용자의 블로그가 자동 생성
 3. 
 
 ![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/rainbow.png)
@@ -94,6 +97,7 @@ applictionContenxt.xml | CLL                                | 웹에 종속적�
   - 사용자가 원하는 뷰가 무엇인 지 판단 한 후, 컨트롤러의 뷰와 대조하여 최종적인 뷰를 결정
   
 ### 개발 (MVC)
+<img width="500" alt="image" src="[https://github.com/newjee/jblog/assets/31722578/4365b259-0d5e-4827-af89-41988ab4931e](https://cphinf.pstatic.net/mooc/20180219_116/1519003779294ejdEx_PNG/1.png)">
 #### 1. Controller
 - 스프링 MVC의 모든 요청은 DispatcerServlet으로 처리
   - url로 들어온 요청을 DS가 catch
