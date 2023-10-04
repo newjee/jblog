@@ -15,20 +15,98 @@
 ![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/rainbow.png)
 
 
-
+## 📂 파일 구조
+```bash
+.
+└── main
+    ├── java
+    │   └── com
+    │       └── poscodx
+    │           └── jblog
+    │               ├── controller
+    │               │   ├── BlogController.java
+    │               │   ├── MainController.java
+    │               │   └── UserController.java
+    │               ├── repository
+    │               │   └── UserRepository.java
+    │               ├── security
+    │               │   ├── Auth.java
+    │               │   ├── AuthInterceptor.java
+    │               │   ├── AuthUser.java
+    │               │   ├── AuthUserHandlerMethodArgumentResolver.java
+    │               │   ├── LoginInterceptor.java
+    │               │   └── LogoutInterceptor.java
+    │               ├── service
+    │               │   └── UserService.java
+    │               └── vo
+    │                   └── UserVo.java
+    ├── resources
+    │   ├── applicationContext.xml
+    │   ├── logback.xml
+    │   └── mybatis
+    │       ├── configuration.xml
+    │       └── mappers
+    │           ├── board.xml
+    │           ├── guestbook.xml
+    │           ├── site.xml
+    │           └── user.xml
+    └── webapp
+        ├── WEB-INF
+        │   ├── spring-servlet.xml
+        │   ├── views
+        │   │   ├── blog
+        │   │   │   ├── admin-basic.jsp
+        │   │   │   ├── admin-category.jsp
+        │   │   │   ├── admin-write.jsp
+        │   │   │   └── main.jsp
+        │   │   ├── error
+        │   │   │   ├── 404.jsp
+        │   │   │   └── 500.jsp
+        │   │   ├── includes
+        │   │   │   └── menu.jsp
+        │   │   ├── main
+        │   │   │   └── index.jsp
+        │   │   └── user
+        │   │       ├── join.jsp
+        │   │       ├── joinsuccess.jsp
+        │   │       └── login.jsp
+        │   └── web.xml
+        └── assets
+            ├── css
+            │   └── jblog.css
+            ├── images
+            │   ├── bul1.gif
+            │   ├── bul2.gif
+            │   ├── check.png
+            │   ├── delete.jpg
+            │   ├── logo.jpg
+            │   └── spring-logo.jpg
+            └── js
+                └── jquery
+                    └── jquery-1.9.0.js
+```
+   
 ## 🛠️ 구현 과정
 ### DB 설계
 > <img width="700" alt="image" src="https://github.com/newjee/jblog/assets/31722578/1971f22e-926b-4af9-b404-a56768c4a977">
 
 ### 회원 기능
-UserController -> UserService -> UserRepository
+- UserController -> UserService -> UserRepository
 기능          |  description
 -------------|----------------------------------------------------------------------
 회원가입을 한다. |  UserController>join
 로그인을 한다.  |  UserController>login </br> -> AuthenticationFilter
 회원가입을 하면 해당 사용자의 블로그가 자동 생성.   |  데이터 저장 및 조회
 
-3. 
+#### auth 설정
+
+### 블로그 기능
+
+### admin 기능
+
+### 로그 설정
+- logback.xml
+
 
 ![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/rainbow.png)
 
@@ -97,7 +175,7 @@ applictionContenxt.xml | CLL                                | 웹에 종속적�
   - 사용자가 원하는 뷰가 무엇인 지 판단 한 후, 컨트롤러의 뷰와 대조하여 최종적인 뷰를 결정
   
 ### 개발 (MVC)
-<img width="500" alt="image" src="[https://github.com/newjee/jblog/assets/31722578/4365b259-0d5e-4827-af89-41988ab4931e](https://cphinf.pstatic.net/mooc/20180219_116/1519003779294ejdEx_PNG/1.png)">
+
 #### 1. Controller
 - 스프링 MVC의 모든 요청은 DispatcerServlet으로 처리
   - url로 들어온 요청을 DS가 catch
@@ -109,11 +187,25 @@ applictionContenxt.xml | CLL                                | 웹에 종속적�
 - applicationWebContext -> spring-sevlet.xml에서 설정
   - View Resolver가 view(.jsp)와 연결 -> return "" 경로 설정
 
-- autowired로 Service 주입
+- autowired로 Service 주입   
 #### 2. Service
 - autowired로 Repository 주입
 - applicationWebContext -> applicationContext.xml에서 설정
 - 
+
+
+![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/rainbow.png)
+
+
+## 🗒️ IoC Container Configuration = Bean Configuration
+### Configuration
+- Auto configuration
+ - Xml
+ - Java
+- Explicit Configuration
+  - Xml
+  - Java
+
 
  
 
