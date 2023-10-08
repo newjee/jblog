@@ -6,9 +6,9 @@
 
 ## 목차
 
-[1.프로젝트 개요](#프로젝트 개요)      
+[1.:pencil: 프로젝트 개요](#프로젝트 개요)      
 [2.🍃 spring 나만의 wa-ggu 정리](#spring 나만의 wa-ggu 정리)      
-[3.🗒️IoC Container ConfigurationBean Configuration](#IoC Container Configuration = Bean Configuration)      
+[3.🗒️IoC Container ConfigurationBean Configuration](#IoC Container Configuration Bean Configuration)      
 [4.번외 멍청일기](#번외 멍청일기)   
 [5.📂 파일 구조](#파일 구조)   
 
@@ -40,10 +40,10 @@
 ### 회원 기능
 - UserController / UserService / UserRepository / User.xml (query)
 
-  요구사항          | UserController           | UserService | UserRepo |
-    --------------|--------------------------|-------------|----------
-  회원가입          | join                     | join  >DuplicateIdException 중복id 예외처리 | insert 
-  로그인            | login > LoginIntercepter |   |
+  요구사항          | UserController           | UserService                            | UserRepo |
+    --------------|--------------------------|----------------------------------------|----------
+  회원가입          | join                     | join  > **DuplicateIdException 중복id** 예외처리 | insert 
+  로그인            | login > LoginIntercepter |                                        |
   로그아웃           | LogoutIntercepter        
   블로그 생성   |
 
@@ -64,9 +64,9 @@
 ### 블로그 기능
 - main 화면
 
-  요구사항          | MainController          | BlogService | BlogRepo |
-  ----------------|-------------------------|-------------|----------
-  유저 리스트 노출     | main                   |              |
+  요구사항          | MainController          | UserService | UserRepo |
+  ----------------|-------------------------|------------|----------
+  유저 리스트 노출     | main                   |   getUsers         |getUsers() > SELECT
 
 
 - admin 화면
@@ -74,9 +74,9 @@
   요구사항          | BlogController      | BlogService | BlogRepo |
     --------------|---------------------|-------------|----------
   권한 설정          | Interceptor         |              |
-  블로그 정보 보여주기 | adminBasic     |     
-  블로그 정보 업데이트 | adminBasic          |              |
-  파일 업로드 | adminBasic  |**fileUploadService** ->exception 처리
+  블로그 정보 보여주기 | adminBasic          |     
+  블로그 정보 업데이트 | adminBasic          | adminBasicUpdate  |updateBasic >UPDATE
+  파일 업로드 | adminBasic (MultipartFile) |**fileUploadService** ->exception 처리
   카데고리 리스트 | adminCategory       
   카테고리 추가 | adminCategory       |
   카테고리 삭제| adminCategoryDelete | |
@@ -85,10 +85,10 @@
 - post 화면
 
   요구사항          | BlogController | BlogService | BlogRepo |
-    ----------------|----------------|-------------|----------
-  게시글 메인     | index           |              |
-  게시글 리스트 </br> (최신 순으로 정렬)   | index               | |
-  카테고리 리스트 |  index              | |
+    ----------------|-------------|-------------|----------
+  게시글 메인     | index       |             |
+  게시글 리스트 </br> (최신 순으로 정렬)   | index       |             |
+  카테고리 리스트 | index       |             |
 
 ####  
 
@@ -182,13 +182,14 @@ applictionContenxt.xml | CLL                                | 웹에 종속적�
 - applicationWebContext -> applicationContext.xml에서 설정
 - 비즈니스 로직 구현
 
-### 3. Repository
+#### 3. Repository
 - autowired로 sqlSession 주입
 - sql 가기 바로 전 관문
 
-### 4. DB
+#### 4. DB
 - MyBatis 설정 -> configuration.xml
-
+- MyBatis Dependency -> pom.xml
+- mappers 파일 > Query
 
 ![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/rainbow.png)
 
@@ -215,6 +216,7 @@ applictionContenxt.xml | CLL                                | 웹에 종속적�
   - ㅋㅋㅋㅋㅋㅋㅋㅠ
 
 - image 처리로 500에러
+ 
 - 첫번째 원소 들고 와야 함
   - ${blogMap.postMap[0].blogVo.title}
 
@@ -241,14 +243,16 @@ applictionContenxt.xml | CLL                                | 웹에 종속적�
   - 20:12:58.132 [http-nio-8080-exec-9] WARN  o.s.w.s.m.s.DefaultHandlerExceptionResolver - Resolved [org.springframework.web.method.annotation.MethodArgumentTypeMismatchException: Failed to convert value of type 'java.lang.String' to required type 'java.util.Optional'; nested exception is org.springframework.core.convert.ConversionFailedException: Failed to convert from type [java.lang.String] to type [@org.springframework.web.bind.annotation.PathVariable java.lang.Long] for value 'update'; nested exception is java.lang.NumberFormatException: For input string: "update"]
   - 위에 이건 줄 알았는데...ㅅ
   -         return "redirect:/blog/admin-basic/";
-이게 잘못됌..ㅎ
+  - 이게 잘못됌..ㅎ
   동준오빠 덕에 해결함 
-		-	      			<td><input  id="file" type="file" name="file"></td>
-- 카테고리 삭제시 포스트 날라가는 제약 조
+        -<td><input  id="file" type="file" name="file"></td>
+- 카테고리 삭제시 포스트 날라가는 제약 조건.......ㅠ
   - Cannot delete or update a parent row: a foreign key constraint fails
     (`jblog`.`post`, CONSTRAINT `fk_post_category1` FOREIGN KEY (`category_no`) REFERENCES `category` (`no`))
+  - post가 존재할 경우 POST DELETE 후 Category TABLE DELETE
 - authintercep
-- 
+- jsp랑 매핑할 때 항상 id 값이 vo의 변수명과 동일해야 하는데... 놓쳐서 에러남...(500)
+
 
 ### 토요일 해야 할 거
 ~~1. 카테고리 포스트 삭제~~
