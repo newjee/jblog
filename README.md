@@ -91,17 +91,58 @@
 ### DB 설계
 > <img width="700" alt="image" src="https://github.com/newjee/jblog/assets/31722578/1971f22e-926b-4af9-b404-a56768c4a977">
 
+
 ### 회원 기능
-- UserController -> UserService -> UserRepository
-기능          |  description
--------------|----------------------------------------------------------------------
-회원가입을 한다. |  UserController>join
-로그인을 한다.  |  UserController>login </br> -> AuthenticationFilter
-회원가입을 하면 해당 사용자의 블로그가 자동 생성.   |  데이터 저장 및 조회
+- UserController / UserService / UserRepository / User.xml (query)
+
+  요구사항          | UserController           | UserService | UserRepo |
+    ----------------|--------------------------|-------------|----------
+  회원가입          | UserController>join      
+  로그인            | UserController>login </br> -> AuthenticationFilter 
+  회원가입 후 블로그 자동생성   | 데이터 저장 및 조회              
 
 #### auth 설정
-
+- 스프링 시큐리티의 간단한 동작 과정
+  1. 스프링 시큐리티는 Role에 따른 url 접근 제어를 기본으로 합니다.
+  2. WebSecurityConfigurerAdapter 을 상속받은  security config 객체에서 각 url 에 요구되는 role을 기술합니다.
+  3. security config 객체에서는 원하는 url 에 원하는 filter를 걸 수 있습니다.
+  4. 다수의 url 에 다수의 filter 를 걸 수 있습니다.
+  5. 특정 url 에 접근하려는 user는 url 걸려있는 필터를 통과해야하며, 모든 필터를 통과한 유저는 인증된 사용자로서 SecurityContext 에 저장됩니다.
+- Spring Security Architecture
+  - Authentication (인증)
+    - 인터페이스 : AuthenticationManager -> AuthenticationProvider
+  - Authorization (인가)
+  - 
 ### 블로그 기능
+- main 화면
+
+  요구사항          | BlogController      | BlogService | BlogRepo |
+  ----------------|----------------------------------------------------|-------------|----------
+  URL 매핑          | main                                               
+  대문 이미지         | UserController>login </br> -> AuthenticationFilter 
+
+
+- admin 화면
+
+  요구사항          | BlogController      | BlogService | BlogRepo |
+    ----------------|----------------------------------------------------|-------------|----------
+  권한 설정        | main
+  파일 업로드         | main
+  이미지 처          | UserController>login </br> -> AuthenticationFilter
+  회원가입 후 블로그 자동생성   | 데이터 저장 및 조회
+
+- post 화면
+
+  요구사항          | BlogController      | BlogService | BlogRepo |
+    ----------------|----------------------------------------------------|-------------|----------
+  게시글 메인         | main
+  게시글 리스트  (최신 순으로 정렬)        | UserController>login </br> -> AuthenticationFilter
+  회원가입 후 블로그 자동생성   | 데이터 저장 및 조회
+  - admin 요구사항          | BlogController      | BlogService | BlogRepo |
+  ----------------|----------------------------------------------------|-------------|----------
+  URL 매핑          | main
+  이미지 처          | UserController>login </br> -> AuthenticationFilter
+  회원가입 후 블로그 자동생성   | 데이터 저장 및 조회
 
 ### admin 기능
 
@@ -208,5 +249,59 @@ applictionContenxt.xml | CLL                                | 웹에 종속적�
   - Java
 
 
- 
 
+
+![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/rainbow.png)
+## 번외) 멍청일기
+### responsebody
+- 쓸데없이 responsebody 어노테이션을 붙여서 return jsp를 가져오지 못했던 슬픈 멍청
+- (categoryNo.isEmpty() && postNo.isEmpty()) {
+  - 하..................................
+  - 이걸로 .............약 2시간..ㅎ
+  - ㅋㅋㅋㅋㅋㅋㅋㅠ
+
+- image 처리로 500에러
+- 첫번째 원소 들고 와야 함
+  - ${blogMap.postMap[0].blogVo.title}
+
+- optional -> vo 저장안되는기분
+  - 빙고...
+  - 인텔리제이의 오류 해결을 믿지 말자
+  - vo에 바보갗이 optional로 함
+    -             blogVo.setCategoryNo(categoryNo.get());
+  - 리턴안함...;;
+    - return sqlSession.insert("user.insert", userVo);
+
+- join 후 블로그 생성하는ㄴ 부붑ㄴ
+  - 세션 으로 하려다가 uservo로걍....
+  - 
+ 
+- 오... 대박
+  -     sqlSession.insert("blog.insert", blogVo);
+        sqlSession.insert("insertCategory", blogVo);
+        sqlSession.insert("insertPost", blogVo);
+
+- admin update 에러
+  - 				<form action="${pageContext.request.contextPath }/admin/update/${blogVo.blogId}" method="post" enctype="multipart/form-data">
+  - jsp url에 id 값 안넣어줌..ㅠ
+  - 20:12:58.132 [http-nio-8080-exec-9] WARN  o.s.w.s.m.s.DefaultHandlerExceptionResolver - Resolved [org.springframework.web.method.annotation.MethodArgumentTypeMismatchException: Failed to convert value of type 'java.lang.String' to required type 'java.util.Optional'; nested exception is org.springframework.core.convert.ConversionFailedException: Failed to convert from type [java.lang.String] to type [@org.springframework.web.bind.annotation.PathVariable java.lang.Long] for value 'update'; nested exception is java.lang.NumberFormatException: For input string: "update"]
+  - 위에 이건 줄 알았는데...ㅅ
+  -         return "redirect:/blog/admin-basic/";
+이게 잘못됌..ㅎ
+  동준오빠 덕에 해결함 
+		-	      			<td><input  id="file" type="file" name="file"></td>
+- 카테고리 삭제시 포스트 날라가는 제약 조
+  - Cannot delete or update a parent row: a foreign key constraint fails
+    (`jblog`.`post`, CONSTRAINT `fk_post_category1` FOREIGN KEY (`category_no`) REFERENCES `category` (`no`))
+- authintercep
+- 
+
+### 토요일 해야 할 거
+1. 카테고리 포스트 삭제
+2. 글 순서 바뀌는 거
+3. 접귾ㅈ데한
+   1. ok
+4. 다른 url 막기....
+   1. interceptor
+   2. ok
+5. 

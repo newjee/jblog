@@ -1,0 +1,37 @@
+>>>> blogController > blogMap > categoryMap
+[BlogVo{blogTitle='null', blogImage='null', blogId='null', categoryNo=null, categoryName='?', categoryDesc='????', postNo=null, postTitle='null', postContents='null'},
+BlogVo{blogTitle='null', blogImage='null', blogId='null', categoryNo=null, categoryName='??', categoryDesc='??? ??', postNo=null, postTitle='null', postContents='null'},
+BlogVo{blogTitle='null', blogImage='null', blogId='null', categoryNo=null, categoryName='??', categoryDesc='??? ??', postNo=null, postTitle='null', postContents='null'}]
+
+
+>>>>> main map >>>>>{
+postMap=[BlogVo{blogTitle='null', blogImage='null', blogId='null', categoryNo=null, categoryName='null', categoryDesc='null', postNo=null, postTitle='?? ??', postContents='?? ??'}, BlogVo{blogTitle='null', blogImage='null', blogId='null', categoryNo=null, categoryName='null', categoryDesc='null', postNo=null, postTitle='???', postContents='????'}],
+categoryMap=[BlogVo{blogTitle='null', blogImage='null', blogId='null', categoryNo=null, categoryName='?', categoryDesc='????', postNo=null, postTitle='null', postContents='null'}, BlogVo{blogTitle='null', blogImage='null', blogId='null', categoryNo=null, categoryName='??', categoryDesc='??? ??', postNo=null, postTitle='null', postContents='null'},
+            BlogVo{blogTitle='null', blogImage='null', blogId='null', categoryNo=null, categoryName='??', categoryDesc='??? ??', postNo=null, postTitle='null', postContents='null'}],
+ mainMap=BlogVo{blogTitle='???? ???', blogImage='/upload-images/202382510569283.jpeg', blogId='zzalang', categoryNo=null, categoryName='null', categoryDesc='null', postNo=null, postTitle='null', postContents='null'}}
+
+
+
+>>>>> blogmap >>>>>{postMap=[BlogVo{blogTitle='null', blogImage='null', blogId='null', categoryNo=null, categoryName='null', categoryDesc='null', postNo=null, postTitle='?? ??', postContents='?? ??'}, BlogVo{blogTitle='null', blogImage='null', blogId='null', categoryNo=null, categoryName='null', categoryDesc='null', postNo=null, postTitle='???', postContents='????'}], categoryMap=[BlogVo{blogTitle='null', blogImage='null', blogId='null', categoryNo=null, categoryName='?', categoryDesc='????', postNo=null, postTitle='null', postContents='null'}, BlogVo{blogTitle='null', blogImage='null', blogId='null', categoryNo=null, categoryName='??', categoryDesc='??? ??', postNo=null, postTitle='null', postContents='null'}, BlogVo{blogTitle='null', blogImage='null', blogId='null', categoryNo=null, categoryName='??', categoryDesc='??? ??', postNo=null, postTitle='null', postContents='null'}],
+
+ mainMap=BlogVo{blogTitle='???? ???', blogImage='/upload-images/202382510569283.jpeg', blogId='zzalang', categoryNo=null, categoryName='null', categoryDesc='null', postNo=null, postTitle='null', postContents='null'}}
+
+
+>>>>> blogmap >>>>>]
+{postMap=[BlogVo{blogTitle='null', blogImage='null', blogId='null', categoryNo=null, categoryName='null', categoryDesc='null', postNo=null, postTitle='?? ??', postContents='?? ??'},
+            BlogVo{blogTitle='null', blogImage='null', blogId='null', categoryNo=null, categoryName='null', categoryDesc='null', postNo=null, postTitle='???', postContents='????'}],
+            categoryMap=[BlogVo{blogTitle='null', blogImage='null', blogId='null', categoryNo=null, categoryName='?', categoryDesc='????', postNo=null, postTitle='null', postContents='null'}, BlogVo{blogTitle='null', blogImage='null', blogId='null', categoryNo=null, categoryName='??', categoryDesc='??? ??', postNo=null, postTitle='null', postContents='null'}, BlogVo{blogTitle='null', blogImage='null', blogId='null', categoryNo=null, categoryName='??', categoryDesc='??? ??', postNo=null, postTitle='null', postContents='null'}], mainMap=BlogVo{blogTitle='???? ???', blogImage='/upload-images/202382510569283.jpeg', blogId='zzalang', categoryNo=null, categoryName='null', categoryDesc='null', postNo=null, postTitle='null', postContents='null'}}
+
+
+>>>>> blogmap >>>>>
+{postMap=[BlogVo{blogTitle='null', blogImage='null', blogId='null', categoryNo=null, categoryName='null', categoryDesc='null', postNo=null, postTitle='?? ??', postContents='?? ??', postRegDate='2023-09-06'},
+        BlogVo{blogTitle='null', blogImage='null', blogId='null', categoryNo=null, categoryName='null', categoryDesc='null', postNo=null, postTitle='???', postContents='????', postRegDate='2023-09-10'}, BlogVo{blogTitle='null', blogImage='null', blogId='null', categoryNo=null, categoryName='null', categoryDesc='null', postNo=null, postTitle='????? ????', postContents='????... ??? ????. </br> ?? ??.. ?? ?? </br> ????? ?? ??? ??? ??.', postRegDate='2023-09-27'}],
+categoryMap=[BlogVo{blogTitle='null', blogImage='null', blogId='null', categoryNo=null, categoryName='?', categoryDesc='????', postNo=null, postTitle='null', postContents='null', postRegDate='null'}, BlogVo{blogTitle='null', blogImage='null', blogId='null', categoryNo=null, categoryName='??', categoryDesc='??? ??', postNo=null, postTitle='null', postContents='null', postRegDate='null'},
+          BlogVo{blogTitle='null', blogImage='null', blogId='null', categoryNo=null, categoryName='??', categoryDesc='??? ??', postNo=null, postTitle='null', postContents='null', postRegDate='null'}],
+mainMap=BlogVo{blogTitle='???? ???', blogImage='/upload-images/202382510569283.jpeg', blogId='zzalang', categoryNo=null, categoryName='null', categoryDesc='null', postNo=null, postTitle='null', postContents='null', postRegDate='null'}}
+
+
+>>>>> blogmap >>>>>{
+postMap=
+[BlogVo{blogTitle='null', blogImage='null', blogId='null', categoryNo=null, categoryName='null', categoryDesc='null', postNo=5, postTitle='????? ????', postContents='????... ??? ????. </br> ?? ??.. ?? ?? </br> ????? ?? ??? ??? ??.', postRegDate='2023-09-27'},
+BlogVo{blogTitle='null', blogImage='null', blogId='null', categoryNo=null, categoryName='null', categoryDesc='null', postNo=4, postTitle='???', postContents='????', postRegDate='2023-09-10'}, BlogVo{blogTitle='null', blogImage='null', blogId='null', categoryNo=null, categoryName='null', categoryDesc='null', postNo=1, postTitle='?? ??', postContents='?? ??', postRegDate='2023-09-06'}], categoryMap=[BlogVo{blogTitle='null', blogImage='null', blogId='null', categoryNo=1, categoryName='?', categoryDesc='????', postNo=null, postTitle='null', postContents='null', postRegDate='null'}, BlogVo{blogTitle='null', blogImage='null', blogId='null', categoryNo=2, categoryName='??', categoryDesc='??? ??', postNo=null, postTitle='null', postContents='null', postRegDate='null'}, BlogVo{blogTitle='null', blogImage='null', blogId='null', categoryNo=3, categoryName='??', categoryDesc='??? ??', postNo=null, postTitle='null', postContents='null', postRegDate='null'}], mainMap=BlogVo{blogTitle='???? ???', blogImage='/upload-images/202382510569283.jpeg', blogId='zzalang', categoryNo=null, categoryName='null', categoryDesc='null', postNo=null, postTitle='null', postContents='null', postRegDate='null'}}

@@ -8,13 +8,13 @@ fieldset		{ border:none }
 a:link 			{ color:#696969; text-decoration:none; font-weight:bold; }
 a:visited 		{ color:#696969; text-decoration:none; font-weight:bold; }
 a:active 		{ color:#696969; text-decoration:none; font-weight:bold; }
-a:hover 		{ color:#dc143c; text-decoration:none; font-weight:bold; } 
+a:hover 		{ color:#dc143c; text-decoration:none; font-weight:bold; }
 
 
 
-.center-content	{ width:500px; margin:120px auto 50px auto}
+.center-content	{ width:500px; margin:60px auto 50px auto; text-align: center;}
 
-.center-content .logo							{ width:163px; height:104px; background:url(/jblog03/assets/images/logo.jpg) 0 0 no-repeat; margin:20px auto; text-indent:-100000px; font-size:0 }
+.center-content .logo							{ width:100%; height:330px; background:url(/jblog/assets/images/dokin.gif) 0 no-repeat; margin:20px auto  ; text-indent:-100000px; font-size:0 }
 .center-content .menu							{ text-align:center; height:20px; margin:0 auto }
 .center-content .menu li						{ display:inline; padding-left:20px }
 .center-content .menu li a						{ font-size:1.2em }
@@ -40,8 +40,8 @@ a:hover 		{ color:#dc143c; text-decoration:none; font-weight:bold; }
 
 .welcome-message								{ height: 200px }
 .welcome-message span							{ font-size:1.2em; font-weight:bold; color:#777 }
-.welcome-message span:before					{ content: url(/jblog03/assets/images/bul1.gif);}
-.welcome-message span:after						{ content: url(/jblog03/assets/images/bul2.gif);}		
+.welcome-message span:before					{ content: url(/jblog/assets/images/bul1.gif);}
+.welcome-message span:after						{ content: url(/jblog/assets/images/bul2.gif);}
 
 
 
@@ -55,7 +55,7 @@ div#footer					{ clear:both; width:100% }
 
 /* header */
 div#header h1		{ text-align:center; line-height:100px; margin:0; color:#fff }
-div#header ul		{ height:20px } 
+div#header ul		{ height:20px }
 div#header li		{ float:right; margin-right:10px; }
 div#header li a 	{ color:#fff; font-weight:bold; text-decoration:none; }
 
@@ -121,6 +121,5 @@ div#extra .blog-logo img	{ width:150px }
 /* footer */
 div#footer		{ background:#F0F0F0; color:#666 }
 div#footer p	{ text-align:center; margin:0; padding:8px 10px }
-
 
 

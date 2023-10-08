@@ -11,36 +11,33 @@
 </head>
 <body>
 	<div id="container">
-		<div id="header">
-			<h1>Spring 이야기</h1>
-			<ul>
-				<li><a href="">로그인</a></li>
-				<li><a href="">로그아웃</a></li>
-				<li><a href="">블로그 관리</a></li>
-			</ul>
-		</div>
+		<c:import url="/WEB-INF/views/includes/header.jsp" />
+
 		<div id="wrapper">
 			<div id="content" class="full-screen">
 				<ul class="admin-menu">
-					<li><a href="">기본설정</a></li>
-					<li><a href="">카테고리</a></li>
+					<li><a href="${pageContext.request.contextPath}/${blogVo.blogId}/admin/basic">기본설정</a></li>
+					<li><a href="${pageContext.request.contextPath}/${blogVo.blogId}/admin/category">카테고리</a></li>
 					<li class="selected">글작성</li>
 				</ul>
-				<form action="" method="post">
+
+				<form action="${pageContext.request.contextPath }/${blogVo.blogId}/admin/write" method="post" >
+
 			      	<table class="admin-cat-write">
 			      		<tr>
 			      			<td class="t">제목</td>
 			      			<td>
-			      				<input type="text" size="60" name="title">
+			      				<input type="text" size="60" name="postTitle">
 				      			<select name="category">
-				      				<option>미분류</option>
-				      				<option>자바</option>
+									<c:forEach items="${categoryList}" var="category">
+										<option value="${category.categoryNo}">${category.categoryName}</option>
+									</c:forEach>
 				      			</select>
 				      		</td>
 			      		</tr>
 			      		<tr>
 			      			<td class="t">내용</td>
-			      			<td><textarea name="content"></textarea></td>
+			      			<td><textarea name="postContents"></textarea></td>
 			      		</tr>
 			      		<tr>
 			      			<td>&nbsp;</td>
@@ -50,11 +47,8 @@
 				</form>
 			</div>
 		</div>
-		<div id="footer">
-			<p>
-				<strong>Spring 이야기</strong> is powered by JBlog (c)2016
-			</p>
-		</div>
+		<c:import url="/WEB-INF/views/includes/footer.jsp" />
+
 	</div>
 </body>
 </html>

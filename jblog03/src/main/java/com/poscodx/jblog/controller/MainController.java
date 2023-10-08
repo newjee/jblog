@@ -6,16 +6,17 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-@RequestMapping("/{id}")
+//@RequestMapping("jblog/{id}")
+
 public class MainController {
 
-    @Autowired
-    private  MainService mainService;
+//    @Autowired
+//    private  MainService mainService;
 
     @RequestMapping("")
-    public String main(Model model) {
-        blogVo 
-        return "blog/main";
+    public String main() {
+//        blogVo
+        return "main/index";
     }
 
 }
