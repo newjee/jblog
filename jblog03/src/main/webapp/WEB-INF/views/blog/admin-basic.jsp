@@ -21,7 +21,7 @@
 					<li><a href="${pageContext.request.contextPath}/${blogVo.blogId}/admin/write">글작성</a></li>
 				</ul>
 				<form action="${pageContext.request.contextPath }/${blogVo.blogId}/admin/basic" method="post" enctype="multipart/form-data">
-					<input type="hidden" name="image" value="${blogVo.blogImage }" />
+					<input type="hidden" name="blogImage" value="${blogVo.blogImage }" />
 					<input type="hidden" name="blogId" value="${blogVo.blogId }" />
 	 		      	<table class="admin-config">
 			      		<tr>

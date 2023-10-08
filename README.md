@@ -2,6 +2,14 @@
 <!-- <h3 align="center"> A Comparative Study between Different Pre-processing Approaches and Classifiers </h3>  
  -->
 
+## 목차
+
+[1.프로젝트 개요](#프로젝트 개요)      
+[2.🍃 spring 나만의 wa-ggu 정리](#spring 나만의 wa-ggu 정리)      
+[3.🗒️IoC Container ConfigurationBean Configuration](#IoC Container Configuration = Bean Configuration)      
+[4.번외 멍청일기](#번외 멍청일기)   
+[5.📂 파일 구조](#파일 구조)   
+
 ## :pencil: 프로젝트 개요
 ### 서비스 설명
 - spring 프레임워크를 활용한 블로그 서비스 개발
@@ -12,85 +20,12 @@
 - 블로그 포스팅
 - 블로그 관리(admin)
 - ...
-  
-![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/rainbow.png)
-
-
-## 📂 파일 구조
-```bash
-.
-└── main
-    ├── java
-    │   └── com
-    │       └── poscodx
-    │           └── jblog
-    │               ├── controller
-    │               │   ├── BlogController.java
-    │               │   ├── MainController.java
-    │               │   └── UserController.java
-    │               ├── repository
-    │               │   └── UserRepository.java
-    │               ├── security
-    │               │   ├── Auth.java
-    │               │   ├── AuthInterceptor.java
-    │               │   ├── AuthUser.java
-    │               │   ├── AuthUserHandlerMethodArgumentResolver.java
-    │               │   ├── LoginInterceptor.java
-    │               │   └── LogoutInterceptor.java
-    │               ├── service
-    │               │   └── UserService.java
-    │               └── vo
-    │                   └── UserVo.java
-    ├── resources
-    │   ├── applicationContext.xml
-    │   ├── logback.xml
-    │   └── mybatis
-    │       ├── configuration.xml
-    │       └── mappers
-    │           ├── board.xml
-    │           ├── guestbook.xml
-    │           ├── site.xml
-    │           └── user.xml
-    └── webapp
-        ├── WEB-INF
-        │   ├── spring-servlet.xml
-        │   ├── views
-        │   │   ├── blog
-        │   │   │   ├── admin-basic.jsp
-        │   │   │   ├── admin-category.jsp
-        │   │   │   ├── admin-write.jsp
-        │   │   │   └── main.jsp
-        │   │   ├── error
-        │   │   │   ├── 404.jsp
-        │   │   │   └── 500.jsp
-        │   │   ├── includes
-        │   │   │   └── menu.jsp
-        │   │   ├── main
-        │   │   │   └── index.jsp
-        │   │   └── user
-        │   │       ├── join.jsp
-        │   │       ├── joinsuccess.jsp
-        │   │       └── login.jsp
-        │   └── web.xml
-        └── assets
-            ├── css
-            │   └── jblog.css
-            ├── images
-            │   ├── bul1.gif
-            │   ├── bul2.gif
-            │   ├── check.png
-            │   ├── delete.jpg
-            │   ├── logo.jpg
-            │   └── spring-logo.jpg
-            └── js
-                └── jquery
-                    └── jquery-1.9.0.js
-```
+ 
    
 ## 🛠️ 구현 과정
 ### DB 설계
 > <img width="700" alt="image" src="https://github.com/newjee/jblog/assets/31722578/1971f22e-926b-4af9-b404-a56768c4a977">
-
++ 위 구조에서 POST 테이블에 reg_Date 추가
 
 ### 회원 기능
 - UserController / UserService / UserRepository / User.xml (query)
@@ -252,9 +187,9 @@ applictionContenxt.xml | CLL                                | 웹에 종속적�
 
 
 ![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/rainbow.png)
-## 번외) 멍청일기
-### responsebody
-- 쓸데없이 responsebody 어노테이션을 붙여서 return jsp를 가져오지 못했던 슬픈 멍청
+## 번외) 멍청일기 - 업데이트 예정...
+- responsebody
+  - 쓸데없이 responsebody 어노테이션을 붙여서 return jsp를 가져오지 못했던 슬픈 멍청
 - (categoryNo.isEmpty() && postNo.isEmpty()) {
   - 하..................................
   - 이걸로 .............약 2시간..ㅎ
@@ -310,7 +245,100 @@ applictionContenxt.xml | CLL                                | 웹에 종속적�
 ~~4. 다른 url 막기....~~
 
 ### 일요일 해야 할 거
-1. 파일 이미지 제한
+~~1. 파일 이미지 제한~~   
 ~~2. 회원 가입 valid~~
-~~~~~~~~3. id 중복체크
-4. 패스워드 암호화~~~~~~~~
+~~3. id 중복체크   
+4. 패스워드 암호화~~
+
+ 
+![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/rainbow.png)
+
+
+## 📂 파일 구조
+```bash
+.
+├── java
+│   └── com
+│       └── poscodx
+│           └── jblog
+│               ├── controller
+│               │   ├── BlogController.java
+│               │   ├── MainController.java
+│               │   └── UserController.java
+│               ├── exception
+│               │   ├── BlogNotFoundException.java
+│               │   ├── FileUploadServiceException.java
+│               │   └── GloabalExceptionHandler.java
+│               ├── repository
+│               │   ├── BlogRepository.java
+│               │   └── UserRepository.java
+│               ├── security
+│               │   ├── AdminInterceptor.java
+│               │   ├── Auth.java
+│               │   ├── AuthInterceptor.java
+│               │   ├── AuthUser.java
+│               │   ├── AuthUserHandlerMethodArgumentResolver.java
+│               │   ├── LoginInterceptor.java
+│               │   └── LogoutInterceptor.java
+│               ├── service
+│               │   ├── BlogService.java
+│               │   ├── FileUploadService.java
+│               │   └── UserService.java
+│               └── vo
+│                   ├── BlogVo.java
+│                   ├── CategoryVo.java
+│                   ├── PostVo.java
+│                   └── UserVo.java
+├── resources
+│   ├── applicationContext.xml
+│   ├── logback.xml
+│   └── mybatis
+│       ├── configuration.xml
+│       └── mappers
+│           ├── blog.xml
+│           └── user.xml
+└── webapp
+    ├── WEB-INF
+    │   ├── spring-servlet.xml
+    │   ├── views
+    │   │   ├── blog
+    │   │   │   ├── admin-basic.jsp
+    │   │   │   ├── admin-category.jsp
+    │   │   │   ├── admin-write.jsp
+    │   │   │   └── main.jsp
+    │   │   ├── error
+    │   │   │   ├── 404.jsp
+    │   │   │   ├── 500.jsp
+    │   │   │   ├── exception.jsp
+    │   │   │   ├── noAuth.jsp
+    │   │   │   └── notExist.jsp
+    │   │   ├── includes
+    │   │   │   ├── footer.jsp
+    │   │   │   ├── header.jsp
+    │   │   │   └── menu.jsp
+    │   │   ├── main
+    │   │   │   └── index.jsp
+    │   │   └── user
+    │   │       ├── join.jsp
+    │   │       ├── joinsuccess.jsp
+    │   │       └── login.jsp
+    │   └── web.xml
+    └── assets
+        ├── css
+        │   └── jblog.css
+        ├── images
+        │   ├── bul1.gif
+        │   ├── bul2.gif
+        │   ├── check.png
+        │   ├── delete.jpg
+        │   ├── dokin.gif
+        │   ├── dokinSister.gif
+        │   ├── dokinchan.gif
+        │   ├── logo.jpg
+        │   ├── spring-logo.jpg
+        │   └── zzalang2.jpg
+        └── js
+            └── jquery
+                └── jquery-1.9.0.js
+
+```

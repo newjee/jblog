@@ -45,6 +45,8 @@
 			<mvc:mapping path="/**/admin/**"/>
 			<bean class="com.poscodx.jblog.security.AdminInterceptor"/>
 		</mvc:interceptor>
+
+
 	</mvc:interceptors>
 
 	<!-- Multipart Resolver -->

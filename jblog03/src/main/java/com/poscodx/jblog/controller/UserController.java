@@ -1,21 +1,21 @@
 package com.poscodx.jblog.controller;
 
-import com.poscodx.jblog.security.Auth;
-import com.poscodx.jblog.security.AuthUser;
+import com.poscodx.jblog.exception.DuplicateIdException;
 import com.poscodx.jblog.service.BlogService;
 import com.poscodx.jblog.service.UserService;
 import com.poscodx.jblog.vo.BlogVo;
 import com.poscodx.jblog.vo.UserVo;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.ObjectError;
+import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
@@ -25,7 +25,7 @@ import java.util.List;
 @Controller
 @RequestMapping("/user")
 public class UserController {
-//없는 페이지 처리 (/user)
+
     @Autowired
     private UserService userService;
 
@@ -37,6 +37,7 @@ public class UserController {
     public String join(@ModelAttribute UserVo userVo) {
         return "user/join";
     }
+
 
     // 1-2. 회원가입 폼 입력 후 회원가입 성공 화면
     @RequestMapping(value = "/join", method = RequestMethod.POST)
@@ -55,11 +56,16 @@ public class UserController {
 //            model.getAttribute("userVo", userVo);
             return "user/join";
         }
-            userService.join(userVo);
-            System.out.println(">>>>userVo " + userVo);
-        session.setAttribute("authUser", userVo);
 
-        return "redirect:/user/joinsuccess";
+        try {
+            userService.join(userVo);
+            session.setAttribute("authUser", userVo);
+            return "redirect:/user/joinsuccess";
+        } catch (DuplicateIdException e) {
+            // 중복 아이디 예외 처리
+            model.addAttribute("errorMessage", "중복된 아이디입니다. 다시 입력하세요.");
+            return "user/join";
+        }
     }
 
     @RequestMapping(value = "/joinsuccess", method = RequestMethod.GET)

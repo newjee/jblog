@@ -3,10 +3,14 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <div id="header">
+
+  <!-- 로고 이미지 -->
+  <a href="${pageContext.request.contextPath}" style="color: #F0F0F0; float: left;">
+    <img src="${pageContext.request.contextPath}/assets/images/dokinchan.gif" alt="로고 설명" style="width: 50px; height: 50px;">
+  </a>
   <h1 style="text-align: center;">
     <a href="${pageContext.request.contextPath}/${blogVo.blogId}" style="color: #F0F0F0;">${blogVo.blogTitle}</a>
   </h1>
-
 
   <ul>
     <c:choose>

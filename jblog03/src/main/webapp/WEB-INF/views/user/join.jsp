@@ -14,18 +14,21 @@
 <body>
 <div class="center-content">
 	<c:import url="/WEB-INF/views/includes/menu.jsp" />
-
 	<form:form
 			modelAttribute="userVo"
-			id="join-form"
 			class="join-form"
-			name="joinForm"
+			id="join-form"
 			method="post"
 			action="${pageContext.request.contextPath }/user/join">
-		<label class="block-label" for="name">이름</label>
-		<input id="name"name="name" type="text" value="">
 
-		<label class="block-label" for="id">아이디</label>
+		<label class="block-label" for="name">이름</label>
+		<form:input path="name" />
+		<p style="padding:3px 0 5px 0; text-align: left; color: #f00">
+			<form:errors path="name" />
+		</p>
+		<!-- <input id="name" name="name" type="text" value=""> -->
+
+		<label class="block-label" for="blog-id">아이디</label>
 		<form:input path="id" />
 		<!-- <input id="blog-id" name="id" type="text">  -->
 		<input id="btn-checkemail" type="button" value="id 중복체크">
@@ -33,8 +36,13 @@
 		<p style="padding:3px 0 5px 0; text-align: left; color: #f00">
 			<form:errors path="id" />
 		</p>
+
 		<label class="block-label" for="password">패스워드</label>
-		<input id="password" name="password" type="password" />
+		<!-- <input id="password" name="password" type="password" /> -->
+		<form:password path="password" />
+		<p style="padding:3px 0 5px 0; text-align: left; color: #f00">
+			<form:errors path="password" />
+		</p>
 
 		<fieldset>
 			<legend>약관동의</legend>
@@ -43,7 +51,9 @@
 		</fieldset>
 
 		<input type="submit" value="가입하기">
-
+		<c:if test="${not empty errorMessage}">
+			<p style="color: red;">${errorMessage}</p>
+		</c:if>
 	</form:form>
 </div>
 </body>

@@ -28,4 +28,12 @@
         ]]>
 	</select>
 
+	<select id="isIdAvailable" parameterType="string" resultType="int">
+    <![CDATA[
+		select count(*)
+		from user
+		where id = #{id} ;
+		]]>
+</select>
+
 </mapper>

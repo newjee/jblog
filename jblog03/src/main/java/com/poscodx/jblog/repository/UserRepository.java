@@ -33,4 +33,12 @@ public class UserRepository {
     public List<UserVo> getUsers() {
         return sqlSession.selectList("user.findUsers");
     }
+
+    public boolean isIdAvailable(String id) {
+        int count = sqlSession.selectOne("user.isIdAvailable", id);
+
+        // 조회 결과를 확인하여 중복 여부를 판단
+        return count == 0; // count가 0인 경우 중복되지 않는 것으로 판단
+
+    }
 }

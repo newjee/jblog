@@ -27,7 +27,7 @@
 			      		<tr>
 			      			<td class="t">제목</td>
 			      			<td>
-			      				<input type="text" size="60" name="postTitle">
+			      				<input type="textarea" size="60" name="postTitle">
 				      			<select name="category">
 									<c:forEach items="${categoryList}" var="category">
 										<option value="${category.categoryNo}">${category.categoryName}</option>
