@@ -1,9 +1,10 @@
+
+#####  README.md Draft...
 <h1 align="center"> jblog03 </h1>
 <!-- <h3 align="center"> A Comparative Study between Different Pre-processing Approaches and Classifiers </h3>  
  -->
 
 ![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/rainbow.png)
-
 ## 목차
 
 [1.:pencil: 프로젝트 개요](#프로젝트 개요)      
@@ -90,7 +91,7 @@
   게시글 리스트 </br> (최신 순으로 정렬)   | index       |             |
   카테고리 리스트 | index       |             |
 
-####  
+#### 
 
 ### etc.
 #### 로그 설정
