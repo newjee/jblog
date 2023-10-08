@@ -2,6 +2,8 @@
 <!-- <h3 align="center"> A Comparative Study between Different Pre-processing Approaches and Classifiers </h3>  
  -->
 
+![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/rainbow.png)
+
 ## 목차
 
 [1.프로젝트 개요](#프로젝트 개요)      
@@ -9,6 +11,14 @@
 [3.🗒️IoC Container ConfigurationBean Configuration](#IoC Container Configuration = Bean Configuration)      
 [4.번외 멍청일기](#번외 멍청일기)   
 [5.📂 파일 구조](#파일 구조)   
+
+![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/rainbow.png)
+
+![img_1.png](blogMain.png)   
+![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/rainbow.png)
+
+![img_1.png](blogPost.png)
+![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/rainbow.png)
 
 ## :pencil: 프로젝트 개요
 ### 서비스 설명
@@ -54,30 +64,24 @@
   요구사항          | BlogController      | BlogService | BlogRepo |
   ----------------|----------------------------------------------------|-------------|----------
   URL 매핑          | main                                               
-  대문 이미지         | UserController>login </br> -> AuthenticationFilter 
+  대문 이미지         | BlogrController> </br> -> AuthenticationFilter 
 
 
 - admin 화면
 
   요구사항          | BlogController      | BlogService | BlogRepo |
     ----------------|----------------------------------------------------|-------------|----------
-  권한 설정        | main
-  파일 업로드         | main
-  이미지 처          | UserController>login </br> -> AuthenticationFilter
-  회원가입 후 블로그 자동생성   | 데이터 저장 및 조회
+  권한 설정        | 
+  파일 업로드       | 
+  
 
 - post 화면
 
   요구사항          | BlogController      | BlogService | BlogRepo |
     ----------------|----------------------------------------------------|-------------|----------
-  게시글 메인         | main
-  게시글 리스트  (최신 순으로 정렬)        | UserController>login </br> -> AuthenticationFilter
-  회원가입 후 블로그 자동생성   | 데이터 저장 및 조회
-  - admin 요구사항          | BlogController      | BlogService | BlogRepo |
-  ----------------|----------------------------------------------------|-------------|----------
-  URL 매핑          | main
-  이미지 처          | UserController>login </br> -> AuthenticationFilter
-  회원가입 후 블로그 자동생성   | 데이터 저장 및 조회
+  게시글 메인         | 
+  게시글 리스트  (최신 순으로 정렬)        | 
+카테고리
 
 ### admin 기능
 
@@ -168,7 +172,14 @@ applictionContenxt.xml | CLL                                | 웹에 종속적�
 #### 2. Service
 - autowired로 Repository 주입
 - applicationWebContext -> applicationContext.xml에서 설정
-- 
+- 비즈니스 로직 구현
+
+### 3. Repository
+- autowired로 sqlSession 주입
+- sql 가기 바로 전 관문
+
+### 4. DB
+- MyBatis 설정 -> configuration.xml
 
 
 ![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/rainbow.png)
