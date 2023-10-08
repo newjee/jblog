@@ -7,6 +7,7 @@ import com.poscodx.jblog.security.AuthUser;
 import com.poscodx.jblog.service.BlogService;
 import com.poscodx.jblog.service.FileUploadService;
 import com.poscodx.jblog.vo.BlogVo;
+import com.poscodx.jblog.vo.PostVo;
 import com.poscodx.jblog.vo.UserVo;
 import org.springframework.beans.PropertyValue;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,10 +18,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Optional;
+import java.util.*;
 
 @Controller
 
@@ -52,38 +50,48 @@ public class BlogController {
             @ModelAttribute BlogVo blogVo,
             Model model) {
 
-        Map<String, Object> blogMap = new HashMap<>();
-        System.out.println(">>>>> blogid >>>>>" + blogId);
-        System.out.println(">>>>> blogVo >>>>>" + blogVo);
+//        Map<String, Object> blogMap = new HashMap<>();
+        System.out.println("@@@@@@@ " + blogVo);
 
         // blogTitle 매핑
         blogVo.setBlogId(blogId);
-        System.out.println(">>>>> blogVo >>>>>" + blogVo);
-        System.out.println(">>>> cate // post" + categoryNo + " " + postNo);
+        System.out.println("@@@@@@@@ " + blogVo);
         blogVo = blogService.getBlogMainContent(blogVo);
+
+
+        // default category 매핑
+        List<BlogVo> categoryList = blogService.getBlogCategoryList(blogVo);
+        System.out.println("@@@@@@@@ " + categoryList);
+        Long firstCategoryNo = categoryList.get(0).getCategoryNo();
+        System.out.println("@@@@@@@@ " + firstCategoryNo);
+        blogVo.setCategoryNo(firstCategoryNo);
+        System.out.println("@@@@@@@@ " + blogVo);
+
+        // default post 매핑
+        List<BlogVo> postList = blogService.getBlogPostList(blogVo);
+        System.out.println("@@@@@@@@ " + postList);
+        Long firstPostNo = postList.get(0).getPostNo();
+        System.out.println("@@@@@@@@ " + firstPostNo);
+        blogVo.setPostNo(firstPostNo);
+        System.out.println("@@@@@@@@ " + blogVo);
+
+        Long postIndex = (long) 0; // post list의 index
 
         model.addAttribute("blogVo", blogVo);
         System.out.println("%%%%%%%%%" + blogVo);
-        blogMap.put("mainMap", blogService.getBlogMainContent(blogVo));
 
         //**************************사용자 id 처리 // 없는 id
         if (!categoryNo.isPresent() && !postNo.isPresent()) {
             System.out.println(">> no cateNo no postNo");
             // 경로에 카테고리 번호와 포스트 번호가 없을 때
             // 기본값  포스트 뿌려주기
-
-            // blogCategory List
-            blogMap.put("categoryMap", blogService.getBlogCategoryList(blogVo));
-            System.out.println(">>>> blogController > blogMap  " + blogMap);
-            System.out.println(">>>> blogController > blogMap > categoryMap " + blogMap.get("categoryMap"));
-            blogService.getBlogPostList(blogVo);
-            // blogPost List
-            blogMap.put("postMap", blogService.getBlogPostList(blogVo));
-            // blogPost Content One
-
-
-            System.out.println(">>>>> main map >>>>>" + blogMap);
-//            System.out.println(">>>>> main Map >>>>>" + blogVo);
+//            // blogCategory List
+//            blogMap.put("categoryMap", blogService.getBlogCategoryList(blogVo));
+//            blogService.getBlogPostList(blogVo);
+//            // blogPost List
+//            blogMap.put("postMap", blogService.getBlogPostList(blogVo));
+//            // blogPost Content One
+            System.out.println(">>>>> main map >>>>>" + blogVo);
 
         } else if (categoryNo.isPresent() && !postNo.isPresent()) {
             // 경로에 카테고리 번호가 있고 포스트 번호가 없을 때
@@ -93,23 +101,11 @@ public class BlogController {
             //카테고리 no 매핑
             blogVo.setCategoryNo(categoryNo.get());
 
-            // blogCategory List
-            blogMap.put("categoryMap", blogService.getBlogCategoryList(blogVo));
-            // blogPost List
-            blogMap.put("postMap", blogService.getBlogPostList(blogVo));
-
-
         } else if (!categoryNo.isPresent() && postNo.isPresent()) {
             // 경로에 카테고리 번호가 없고 포스트 번호가 있을 때
             // 포스트 view
-
+            System.out.println("카테고리nonononono");
             blogVo.setPostNo(postNo.get());
-
-            // blogCategory List
-            blogMap.put("categoryMap", blogService.getBlogCategoryList(blogVo));
-            // blogPost List
-            blogMap.put("postMap", blogService.getBlogPostList(blogVo));
-
 
         } else if (categoryNo.isPresent() && postNo.isPresent()) {
             // 경로에 카테고리 번호와 포스트 번호가 모두 있을 때
@@ -118,18 +114,25 @@ public class BlogController {
             blogVo.setCategoryNo(categoryNo.get());
             blogVo.setPostNo(postNo.get());
 
-            // blogCategory List
-            blogMap.put("categoryMap", blogService.getBlogCategoryList(blogVo));
-            // blogPost List
-            blogMap.put("postMap", blogService.getBlogPostList(blogVo));
+            for(BlogVo data : postList) {
+                if(data.getPostNo() == postNo.get()) break;
+                postIndex++;
+            }
 
         } else {
             return "error";
         }
-        model.addAttribute("blogMap", blogMap);
 
-//        model.addAttribute("blogMap", blogMap);
-        System.out.println(">>>>> blogmap >>>>>" + blogMap);
+        model.addAttribute("postIndex", postIndex);
+        // blogCategory List
+        model.addAttribute("categoryList", blogService.getBlogCategoryList(blogVo));
+        System.out.println("!!!!!!!!! blogService.getBlogCategoryList(blogVo) !!!!! " + blogService.getBlogCategoryList(blogVo));
+        System.out.println("!!!!!!model!!!!!!!  " + model);
+        // blogPost List
+        model.addAttribute("PostList", blogService.getBlogPostList(blogVo));
+        System.out.println("!!!!!!model!!!!!!!   " + model);
+
+        System.out.println(">>>>> blogVo >>>>>" + blogVo);
 
         return "blog/main";
     }
@@ -155,15 +158,15 @@ public class BlogController {
     public String adminBasic(@PathVariable("id") String blogId,
                              @ModelAttribute BlogVo blogVo,
                              MultipartFile file) {
-        //update
-        blogVo.setBlogId(blogId);
-        blogService.getBlogMainContent(blogVo);
+        System.out.println("######***** blogvo >>>>>" + blogVo);
 
         String blogImage = fileUploadService.restore(file);
 
-        if (blogImage != null) {
-            blogVo.setBlogImage(blogImage);
+        if (blogImage == null) {
+            blogImage = blogVo.getBlogImage();
         }
+        blogVo.setBlogImage(blogImage);
+
         System.out.println("***** blogImage >>>>>" + blogImage);
         System.out.println("***** blogvo >>>>>" + blogVo);
 

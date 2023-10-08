@@ -27,10 +27,12 @@
 
 		<label class="block-label" for="id">아이디</label>
 		<form:input path="id" />
-
+		<!-- <input id="blog-id" name="id" type="text">  -->
 		<input id="btn-checkemail" type="button" value="id 중복체크">
 		<img id="img-checkemail" style="display: none;" src="${pageContext.request.contextPath}/assets/images/check.png">
-
+		<p style="padding:3px 0 5px 0; text-align: left; color: #f00">
+			<form:errors path="id" />
+		</p>
 		<label class="block-label" for="password">패스워드</label>
 		<input id="password" name="password" type="password" />
 

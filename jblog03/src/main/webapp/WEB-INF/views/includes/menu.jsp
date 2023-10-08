@@ -2,7 +2,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<a href="${pageContext.request.contextPath}/${authUser.id}" class="logo-link">
+<a href="${pageContext.request.contextPath}" class="logo-link">
   <h1 class="logo"></h1>
 </a>
 <ul class="menu">

@@ -1,13 +1,22 @@
 package com.poscodx.jblog.vo;
 
+import org.hibernate.validator.constraints.Length;
+
 import javax.validation.constraints.NotEmpty;
 
 public class UserVo {
 
+    @NotEmpty
+    @Length(min=2, max=15)
     private String id;
-    private String name;
+
+    @NotEmpty
+    @Length(min=4, max=16)
     private String password;
 
+    @NotEmpty
+    @Length(min=2, max=8)
+    private String name;
     private String role;
 
     @Override

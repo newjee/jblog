@@ -5,6 +5,8 @@ import com.poscodx.jblog.vo.UserVo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class UserService {
 
@@ -24,4 +26,10 @@ public class UserService {
     }
 
 
+
+    public List<UserVo> getUsers() {
+
+        return userRepository.getUsers();
+
+    }
 }

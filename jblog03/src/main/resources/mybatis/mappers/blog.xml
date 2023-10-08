@@ -39,6 +39,8 @@
 								where blog_id = #{blogId }
 								order by no asc ) b
 				where a.category_no = b.no
+                order by a.no desc
+
 				]]>
             </when>
             <otherwise>

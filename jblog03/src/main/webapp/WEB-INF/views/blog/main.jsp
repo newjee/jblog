@@ -16,14 +16,20 @@
 		<div id="wrapper">
 			<div id="content">
 				<div class="blog-content">
+					<c:choose>
+					<c:when test="${empty PostList }"><h3 style="color:gray">생성된 게시물이 존재하지 않습니다.</h3></c:when>
 
-					<h4>${blogMap.postMap[0].postTitle} </h4>
+					<c:otherwise>
+					<h4>${PostList[postIndex].postTitle }</h4>
 					<p>
-						${blogMap.postMap[0].postContents }
+						${fn:replace(PostList[postIndex].postContents, newline, "<br>") }
 					<p>
+
+						</c:otherwise>
+						</c:choose>
 				</div>
 				<ul class="blog-list">
-					<c:forEach var="post" items="${blogMap.postMap}">
+					<c:forEach var="post" items="${PostList}">
 						<li>
 							<a href="${pageContext.request.contextPath}/${blogVo.blogId}/${blogVo.categoryNo}/${post.postNo}" >${post.postTitle}</a>
 							<span style="float: right;">
@@ -36,10 +42,11 @@
 			</div>
 		</div>
 
+		<%--이미지--%>
 		<div id="extra">
 			<div class="blog-logo">
 <%--				<img src="${pageContext.request.contextPath}/assets/images/zzalang2.jpg" style="width: 100%; margin-top: 20px;">--%>
-					<img src="${pageContext.request.contextPath}${blogMap['mainMap'].blogImage }" style="width: 100%; margin-top: 20px;">
+					<img src="${pageContext.request.contextPath}${blogVo.blogImage }" style="width: 100%; margin-top: 20px;">
 
 			</div>
 		</div>
@@ -47,7 +54,7 @@
 		<div id="navigation">
 			<h2>카테고리</h2>
 			<ul>
-				<c:forEach var="category" items="${blogMap.categoryMap}">
+				<c:forEach var="category" items="${categoryList}">
 					<li>
 						<a href="${pageContext.request.contextPath}/${blogVo.blogId}/${category.categoryNo}">
 								${category.categoryName}</a>
