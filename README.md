@@ -41,10 +41,11 @@
 - UserController / UserService / UserRepository / User.xml (query)
 
   요구사항          | UserController           | UserService | UserRepo |
-    ----------------|--------------------------|-------------|----------
-  회원가입          | UserController>join      
-  로그인            | UserController>login </br> -> AuthenticationFilter 
-  회원가입 후 블로그 자동생성   | 데이터 저장 및 조회              
+    --------------|--------------------------|-------------|----------
+  회원가입          | join                     | join  >DuplicateIdException 중복id 예외처리 | insert 
+  로그인            | login > LoginIntercepter |   |
+  로그아웃           | LogoutIntercepter        
+  블로그 생성   |
 
 #### auth 설정
 - 스프링 시큐리티의 간단한 동작 과정
@@ -57,35 +58,42 @@
   - Authentication (인증)
     - 인터페이스 : AuthenticationManager -> AuthenticationProvider
   - Authorization (인가)
-  - 
+
+#### Interceptor
+
 ### 블로그 기능
 - main 화면
 
-  요구사항          | BlogController      | BlogService | BlogRepo |
-  ----------------|----------------------------------------------------|-------------|----------
-  URL 매핑          | main                                               
-  대문 이미지         | BlogrController> </br> -> AuthenticationFilter 
+  요구사항          | MainController          | BlogService | BlogRepo |
+  ----------------|-------------------------|-------------|----------
+  유저 리스트 노출     | main                   |              |
 
 
 - admin 화면
 
   요구사항          | BlogController      | BlogService | BlogRepo |
-    ----------------|----------------------------------------------------|-------------|----------
-  권한 설정        | 
-  파일 업로드       | 
-  
+    --------------|---------------------|-------------|----------
+  권한 설정          | Interceptor         |              |
+  블로그 정보 보여주기 | adminBasic     |     
+  블로그 정보 업데이트 | adminBasic          |              |
+  파일 업로드 | adminBasic  |**fileUploadService** ->exception 처리
+  카데고리 리스트 | adminCategory       
+  카테고리 추가 | adminCategory       |
+  카테고리 삭제| adminCategoryDelete | |
+  글 작성 | adminWrite          ||
 
 - post 화면
 
-  요구사항          | BlogController      | BlogService | BlogRepo |
-    ----------------|----------------------------------------------------|-------------|----------
-  게시글 메인         | 
-  게시글 리스트  (최신 순으로 정렬)        | 
-카테고리
+  요구사항          | BlogController | BlogService | BlogRepo |
+    ----------------|----------------|-------------|----------
+  게시글 메인     | index           |              |
+  게시글 리스트 </br> (최신 순으로 정렬)   | index               | |
+  카테고리 리스트 |  index              | |
 
-### admin 기능
+####  
 
-### 로그 설정
+### etc.
+#### 로그 설정
 - logback.xml
 
 
